@@ -11,11 +11,17 @@
 |
 */
 
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+
+Route::resource('computers', 'ComputerController');
+Route::post('maintains', 'MaintainController@index');
+Route::resource('parts', 'PartController');
+Route::resource('brands', 'BrandController')->except(['index']);
+Route::post('brands', 'BrandController@index');
 
